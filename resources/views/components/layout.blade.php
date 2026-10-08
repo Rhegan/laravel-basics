@@ -24,6 +24,7 @@
 <body>
     <nav>
         <a href="/">Welcome</a>
+        <a href="/tasks">Tasks</a>
         <a href="/contact">Contact</a>
         <a href="/about">About Us</a>
     </nav>
