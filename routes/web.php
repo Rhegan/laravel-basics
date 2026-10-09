@@ -2,25 +2,21 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'welcome', [
-    'greeting'  => 'Hello',
-    'person'    => request('person', 'world')
-]);
+Route::get('/', function () {
+    $ideas = session()->get('ideas', []);
 
-// Same same as above
-// Route::get('/', function () {
-//     return view('welcome', [
-//         'greeting'  => 'Hello',
-//         'person'    => request('person', 'world')
-//     ]);
-// })
+    return view('ideas')->with('ideas', $ideas);
+});
 
-Route::view('/tasks', 'task', [
-    'tasks' => [
-        'Go to the market',
-        'Walk the dog',
-        'Watch a video tutorial',
-    ],
-]);
-Route::view('/about', 'about');
-Route::view('/contact', 'contact');
+Route::post('/ideas', function () {
+    $idea = request()->idea;
+    session()->push('ideas', $idea);
+
+    return redirect('/');
+});
+
+Route::get('/delete-ideas', function () {
+    session()->remove('ideas');
+
+    return redirect('/');
+});
