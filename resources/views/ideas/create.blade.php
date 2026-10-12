@@ -6,7 +6,7 @@
 
             <div class="mt-2">
                 <textarea name="description" id="description" rows="3" class="block w-full rounded-md bg-white/5 px-3"></textarea>
-                <x-forms.error name="description"></x-forms.error>
+                <x-forms.error name="description"/>
             </div>
 
             <p class="mt-2 text-sm/6 text-gray-400">Have an idea you want to save for later?</p>
