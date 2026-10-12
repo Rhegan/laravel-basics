@@ -1,4 +1,4 @@
-<div class="navbar bg-base-100 shadow-sm">
+<div class="navbar bg-base-200">
     <div class="navbar-start">
         <div class="dropdown">
         <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
@@ -20,7 +20,14 @@
         </ul>
     </div>
     
-    <div class="navbar-end">
-        <a class="btn">Placeholder</a>
+    <div class="navbar-end space-x-2">
+        @auth
+            <form action="/logout" method="POST">
+                <button type="submit" class="btn btn-ghost">Log out</button>
+            </form>
+        @else
+            <a href="/register" class="btn btn-primary">Register</a>
+            <a href="/login" class="btn btn-secondary">Login</a>
+        @endauth
     </div>
 </div>

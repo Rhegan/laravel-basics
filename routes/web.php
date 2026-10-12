@@ -1,16 +1,15 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterUserController;
+use App\Http\Controllers\Auth\SessionsController;
 use App\Http\Controllers\IdeaController;
-use App\Models\Idea;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/ideas', [IdeaController::class, 'index']);
-// Route::get('/ideas/create', [IdeaController::class, 'create']);
-// Route::post('/ideas', [IdeaController::class, 'store']);
-// Route::get('/ideas/{idea}', [IdeaController::class, 'show']);
-// Route::get('/ideas/{idea}/edit', [IdeaController::class, 'edit']);
-// Route::patch('/ideas/{idea}', [IdeaController::class, 'update']);
-// Route::delete('/ideas/{idea}', [IdeaController::class, 'destory']);
-
-// This is the same as the above but compact
 Route::resource('ideas', IdeaController::class);
+
+Route::get('register', [RegisterUserController::class, 'create']);
+Route::post('register', [RegisterUserController::class, 'store']);
+
+Route::get('login', [SessionsController::class, 'create']);
+Route::post('login', [SessionsController::class, 'store']);
+Route::post('logout', [SessionsController::class, 'destroy']);
