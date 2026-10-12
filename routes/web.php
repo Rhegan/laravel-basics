@@ -10,6 +10,21 @@ Route::get('/ideas', function () {
     return view('ideas.index')->with('ideas', $ideas);
 });
 
+// create
+Route::get('/ideas/create', function () {
+    return view('ideas.create');
+});
+
+// store
+Route::post('/ideas', function () {
+    Idea::create([
+        'description'    => request()->description,
+        'state'         => 'pending'
+    ]);
+
+    return redirect('/ideas');
+});
+
 // show
 Route::get('/ideas/{idea}', function (Idea $idea) {
     return view('ideas.show')->with('idea', $idea);
@@ -28,17 +43,6 @@ Route::patch('/ideas/{idea}', function (Idea $idea) {
 
     return redirect("/ideas/{$idea->id}");
 });
-
-//store
-Route::post('/ideas', function () {
-    Idea::create([
-        'description'    => request()->description,
-        'state'         => 'pending'
-    ]);
-
-    return redirect('/ideas');
-});
-
 
 // destroy
 Route::delete('/ideas/{idea}', function (Idea $idea) {
