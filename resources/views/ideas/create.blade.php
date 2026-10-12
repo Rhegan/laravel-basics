@@ -1,11 +1,16 @@
-<x-layout>
-    <form method="POST" action="/ideas">
+<x-layout title="Create Idea">
+    <form class="card bg-neutral p-6" method="POST" action="/ideas">
         @csrf
         <div class="col-span-full">
             <label for="description" class="block text-sm/6 font-medium text-white">Create New Idea</label>
 
             <div class="mt-2">
-                <textarea name="description" id="description" rows="3" class="block w-full rounded-md bg-white/5 px-3"></textarea>
+                <textarea
+                    id="description"
+                    name="description"
+                    rows="3"
+                    class="textarea w-full @error('description') textarea-error @enderror"
+                ></textarea>
                 <x-forms.error name="description"/>
             </div>
 
@@ -13,7 +18,7 @@
         </div>
 
         <div class="mt-6 flex items-center gap-x-6">
-            <button type="submit" class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visable:outline-2 focus-visable:outline-offset-2 focus-visible:outline-indigo-500">
+            <button type="submit" class="btn btn-primary">
                 Save
             </button>
         </div>

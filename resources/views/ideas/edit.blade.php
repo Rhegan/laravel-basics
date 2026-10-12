@@ -1,12 +1,12 @@
-<x-layout>
-    <form method="POST" action="/ideas/{{ $idea->id }}">
+<x-layout title="Edit Idea">
+    <form class="card bg-neutral p-6" method="POST" action="/ideas/{{ $idea->id }}">
         @csrf
         @method('PATCH')
         <div class="col-span-full">
             <label for="description" class="block text-sm/6 font-medium text-white">Edit Your Idea</label>
 
             <div class="mt-2">
-                <textarea name="description" id="description" rows="3" class="block w-full rounded-md bg-white/5 px-3">{{ $idea->description }}</textarea>
+                <textarea name="description" id="description" rows="3" class="textarea w-full">{{ $idea->description }}</textarea>
                 <x-forms.error name="description"/>
             </div>
 
@@ -14,11 +14,11 @@
         </div>
 
         <div class="mt-6 flex items-center gap-x-2">
-            <button type="submit" class="rounded-md bg-indigo-500 px-3 py-2 text-sm font-semibold text-white focus-visable:outline-2 focus-visable:outline-offset-2 focus-visible:outline-indigo-500">
+            <button type="submit" class="btn btn-primary">
                 Update
             </button>
 
-            <button form="delete-idea-form" type="submit" class="rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white focus-visable:outline-2 focus-visable:outline-offset-2 focus-visible:outline-red-500">
+            <button form="delete-idea-form" type="submit" class="btn btn-error">
                 Delete
             </button>
         </div>
