@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreIdeaRequest;
 use App\Http\Requests\UpdateIdeaRequest;
 use App\Models\Idea;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class IdeaController extends Controller
 {
@@ -14,9 +14,7 @@ class IdeaController extends Controller
      */
     public function index()
     {
-        $ideas = Idea::all();
-
-        return view('ideas.index')->with('ideas', $ideas);
+        return view('ideas.index')->with('ideas', auth()->user()->ideas()->get());
     }
 
     /**
@@ -32,10 +30,7 @@ class IdeaController extends Controller
      */
     public function store(StoreIdeaRequest $request)
     {
-        Idea::create([
-            'description'   => $request->description,
-            'state'         => 'pending'
-        ]);
+        $request->user()->ideas()->create($request->validated());
 
         return redirect('/ideas');
     }
@@ -45,6 +40,7 @@ class IdeaController extends Controller
      */
     public function show(Idea $idea)
     {
+        Gate::authorize('update', $idea);
         return view('ideas.show')->with('idea', $idea);
     }
 
@@ -53,6 +49,7 @@ class IdeaController extends Controller
      */
     public function edit(Idea $idea)
     {
+        Gate::authorize('update', $idea);
         return view('ideas.edit')->with('idea', $idea);
     }
 
@@ -61,6 +58,7 @@ class IdeaController extends Controller
      */
     public function update(UpdateIdeaRequest $request, Idea $idea)
     {
+        Gate::authorize('update', $idea);
         $idea->update([
             'description'   => $request->description,
         ]);

@@ -8,6 +8,8 @@
                 @endforeach
             </ul>
         </div>
+
+        <p class="mt-6"><a href="/ideas/create" class="underline">Create a new one</a></p>
     @else
         <p>No ideas yet. <a href="/ideas/create" class="underline">Create a new one</a></p>
     @endif

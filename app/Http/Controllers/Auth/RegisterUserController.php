@@ -19,7 +19,7 @@ class RegisterUserController extends Controller
         $user = User::create($request->validated());
 
         Auth::login($user);
-        request()->session()->regenerateToken();
+        request()->session()->regenerate();
 
         return redirect("/ideas");
     }

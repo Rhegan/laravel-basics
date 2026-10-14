@@ -9,6 +9,9 @@
             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
             <li><a href="/ideas">Ideas</a></li>
             <li><a href="/ideas/create">Create Idea</a></li>
+            @can('view-admin')
+                <li><a href="/admin">Admin</a></li>
+            @endcan
         </ul>
         </div>
         <a class="btn btn-ghost text-xl">Learn</a>
@@ -17,6 +20,9 @@
         <ul class="menu menu-horizontal px-1">
             <li><a href="/ideas">Ideas</a></li>
             <li><a href="/ideas/create">Create Idea</a></li>
+            @can('view-admin')
+                <li><a href="/admin">Admin</a></li>
+            @endcan
         </ul>
     </div>
     

@@ -13,20 +13,20 @@ class SessionsController extends Controller
     {
         return view("auth.login");
     }
+
     public function store(StoreSessionRequest $request)
     {
         if (Auth::attempt($request->validated()))
         {
             $request->session()->regenerate();
-            return redirect("/ideas");
+            return redirect()->intended('/ideas');
         }
-        else
-        {
-            return back()
-                ->withErrors([
-                    'email' => 'The provided credentials do not match our records.',
-                ]);
-        }
+
+        return back()
+            ->withErrors([
+                'email' => 'The provided credentials do not match our records.',
+            ])
+            ->onlyInput('email');
     }
 
     public function destroy()
