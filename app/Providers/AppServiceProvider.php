@@ -22,14 +22,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('view-admin', function (User $user)
-        {
-            if($user->isAdmin())
-            {
-                return Response::allow();
-            }
+        // Gate::define('view-admin', function (User $user)
+        // {
+        //     if($user->isAdmin())
+        //     {
+        //         return Response::allow();
+        //     }
 
-            return Response::denyAsNotFound();
-        });
+        //     return Response::denyAsNotFound();
+        // });
     }
 }
