@@ -18,6 +18,10 @@ class User extends Authenticatable
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
+    protected $attributes = [
+        'role' => 'guest',
+    ];
+
     /**
      * Get the attributes that should be cast.
      *

@@ -6,23 +6,23 @@
 
             <div>
                 <label for="name" class="label">Name</label>
-                <input name="name" type="text" class="input @error('name') textarea-error @enderror" placeholder="Your Name" required />
+                <input name="name" data-test="name" type="text" class="input @error('name') textarea-error @enderror" placeholder="Your Name" required />
                 <x-forms.error name="name"/>
             </div>
 
             <div>
                 <label for="email" class="label">Email</label>
-                <input name="email" type="email" class="input @error('email') textarea-error @enderror" placeholder="Your Email" required />
+                <input name="email" data-test="email" type="email" class="input @error('email') textarea-error @enderror" placeholder="Your Email" required />
                 <x-forms.error name="email"/>
             </div>
 
             <div>
                 <label for="password" class="label">Password</label>
-                <input name="password" type="password" class="input @error('password') textarea-error @enderror" placeholder="Password" autocomplete="new-password" required />
+                <input name="password" data-test="password" type="password" class="input @error('password') textarea-error @enderror" placeholder="Password" autocomplete="new-password" required />
                 <x-forms.error name="password"/> 
             </div>
 
-            <button type="submit" class="btn btn-neutral mt-4">Register</button>
+            <button type="submit" data-test="register-btn" class="btn btn-neutral mt-4">Register</button>
         </fieldset>
     </form>
 </x-layout>
